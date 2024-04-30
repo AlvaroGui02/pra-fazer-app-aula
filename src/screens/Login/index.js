@@ -2,12 +2,13 @@ import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import styles from './style'
 
-export default function Login() {
+export default function Login({ navigation }) {
     let errorLogin = null
 
     return (
         <View style={styles.container}>
-            <Image style={styles.logo} source={require('../../../assets/logo_pra_fazer.png')} />
+            <Image style={styles.logo} 
+            source={require('../../../assets/logo_pra_fazer.png')} />
 
             { errorLogin != null && (
                 <Text style={styles.alert}>{ errorLogin }</Text>
@@ -27,7 +28,10 @@ export default function Login() {
                 <Text style={styles.textButton}>Entrar</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonCreate}>
+            <TouchableOpacity
+                style={styles.buttonCreate}
+                onPress={() => navigation.navigate('CreateUser')}
+            >
                 <Text style={styles.buttonCreateText}>Criar Usuário</Text>
             </TouchableOpacity>
         </View>
